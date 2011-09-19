@@ -66,8 +66,8 @@
         
         this.options = $.extend({
             filters:    [],
-            width:      this.image.attr('width'),
-            height:     this.image.attr('height'),
+            width:      parseInt(this.image.attr('width'), 10),
+            height:     parseInt(this.image.attr('height'), 10),
             src:        this.image.attr('src')
         }, options);
 
@@ -82,15 +82,26 @@
 
         this.loadImage();
     }
+
     $.extend(ImageCanvas.prototype, {
 
         loadImage: function() {
             var img = new Image();
             img.onload = $.proxy(function() {
-
                 this.context.drawImage(img, 0, 0);
-                var imageData = this.context.getImageData(0, 0, this.options.width, this.options.height),
-                    pixels    = imageData.data,
+                var imageData;
+                try { 
+                    try { 
+                        imageData = this.context.getImageData(0, 0, this.options.width, this.options.height);
+                    } catch (e) { 
+                        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead"); 
+                        imageData = this.context.getImageData(0, 0, this.options.width, this.options.height);
+                    } 
+                } catch (e) { 
+                    throw new Error("unable to access image data: " + e); 
+                }
+
+                var pixels    = imageData.data,
                     f         = new Filter(pixels);
 
                 $.each(this.options.filters, function(i, filt) {
@@ -112,4 +123,5 @@
             });
         });
     }
+
 })(jQuery);
