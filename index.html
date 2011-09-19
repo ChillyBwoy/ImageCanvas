@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Leica Academy: Magnum Photos в Москве – Марк Пауэр. «Между чем-то и ничем»</title>
+        <link href="stylesheets/screen.css" media="screen" rel="stylesheet">
+        <script type="text/javascript" src="javascripts/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="javascripts/image_canvas.js"></script>
+        <script type="text/javascript" charset="utf-8">
+        
+            $(document).ready(function() {
+                $('.img-canvas-1').ImageCanvas(['invert']);
+                $('.img-canvas-2').ImageCanvas(['monochrome', 'noise']);
+                $('.img-canvas-3').ImageCanvas(['sepia', 'noise']);
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div class="page">
+            <span class="img-container">
+                <img src="http://www.w3.org/html/logo/img/html5-display.png" width="495" height="498">
+            </span>
+            <span class="img-container">
+                <img src="http://www.w3.org/html/logo/img/html5-display.png" width="495" height="498" class="img-canvas-1">
+            </span>
+            <span class="img-container">
+                <img src="http://www.w3.org/html/logo/img/html5-display.png" width="495" height="498" class="img-canvas-2">
+            </span>
+            <span class="img-container">
+                <img src="http://www.w3.org/html/logo/img/html5-display.png" width="495" height="498" class="img-canvas-3">
+            </span>
+        </div>
+    </body>
+</html>

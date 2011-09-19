@@ -1,0 +1,16 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #FFF;
+    color: #333;
+}
+.page{
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+}
+.img-container{
+    margin: 0;
+    padding: 0;
+}
